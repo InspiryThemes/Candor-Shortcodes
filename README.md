@@ -1,1 +1,1 @@
-# Candor-Shortcodes
+# Candor Shortcodes Plugin
