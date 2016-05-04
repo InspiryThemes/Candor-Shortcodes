@@ -250,3 +250,27 @@ if( !function_exists( 'inspiry_contrast_content' ) ) :
 
 	add_shortcode( 'inspiry_contrast_content', 'inspiry_contrast_content' );
 endif;
+
+
+/**
+ * Wide Content
+ */
+if( !function_exists( 'inspiry_wide_content' ) ) :
+	function inspiry_wide_content( $atts, $content = null ) {
+		return '<div class="wide-content">' . do_shortcode( $content ) . '</div>';
+	}
+
+	add_shortcode( 'inspiry_wide_content', 'inspiry_wide_content' );
+endif;
+
+
+/**
+ * Full Width Content
+ */
+if( !function_exists( 'inspiry_full_width_content' ) ) :
+	function inspiry_full_width_content( $atts, $content = null ) {
+		return '<div class="full-width-content">' . do_shortcode( $content ) . '</div>';
+	}
+
+	add_shortcode( 'inspiry_full_width_content', 'inspiry_full_width_content' );
+endif;
