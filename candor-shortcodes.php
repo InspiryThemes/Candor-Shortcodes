@@ -102,11 +102,17 @@ endif;
 if( !function_exists( 'inspiry_button' ) ) :
 	function inspiry_button( $atts, $content = null ) {
 		extract( shortcode_atts( array(
-			'class' => '',
+			'type' => '',       // possible value are info, success, warning and danger. Leave empty for default style.
 			'link' => '#',
 			'target' => ''
 		), $atts ) );
-		return '<a class="btn ' . $class . '" href="' . $link . '" target="' . $target . '">' . do_shortcode( $content ) . '</a>';
+
+		$button_class = '';
+		if ( ! empty( $type ) ) {
+			$button_class = 'btn-' . $type;
+		}
+
+		return '<a class="btn ' . $button_class . '" href="' . $link . '" target="' . $target . '">' . do_shortcode( $content ) . '</a>';
 	}
 
 	add_shortcode( 'inspiry_button', 'inspiry_button' );
@@ -199,16 +205,36 @@ endif;
 /**
  * Progress Bar
  */
-
 if( !function_exists( 'inspiry_progress_bar' ) ) :
 	function inspiry_progress_bar( $atts, $content = null ) {
 		extract( shortcode_atts( array(
-			'value' => '0',
-			'color' => '',
+			'value' => '0', // possible values 0 to 100
+			'color' => '',  // possible values are green, orange, red. Leave empty for blue
 		), $atts ) );
 
 		return '<div class="progress-bar-outer"><div class="progress-bar-inner ' . $color . '" style="width: ' . $value . '%"></div><div class="progress-bar-skill-level">' . $value . '%</div></div>';
 	}
 
 	add_shortcode( 'inspiry_progress_bar', 'inspiry_progress_bar' );
+endif;
+
+
+/**
+ * Alert
+ */
+if( !function_exists( 'inspiry_alert' ) ) :
+	function inspiry_alert( $atts, $content = null ) {
+		extract( shortcode_atts( array(
+			'type' => '',   // Possible values are success, warning, danger. Leave empty for blue
+		), $atts ) );
+
+		$alert_class = '';
+		if ( ! empty( $type ) ) {
+			$alert_class = 'alert-' . $type;
+		}
+
+		return '<div class="alert ' . $alert_class . '">' . do_shortcode( $content ) . '</div>';
+	}
+
+	add_shortcode( 'inspiry_alert', 'inspiry_alert' );
 endif;
