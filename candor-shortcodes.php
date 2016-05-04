@@ -238,3 +238,15 @@ if( !function_exists( 'inspiry_alert' ) ) :
 
 	add_shortcode( 'inspiry_alert', 'inspiry_alert' );
 endif;
+
+
+/**
+ * Contrast Content
+ */
+if( !function_exists( 'inspiry_contrast_content' ) ) :
+	function inspiry_contrast_content( $atts, $content = null ) {
+		return '<div class="contrast-content">' . do_shortcode( $content ) . '</div>';
+	}
+
+	add_shortcode( 'inspiry_contrast_content', 'inspiry_contrast_content' );
+endif;
